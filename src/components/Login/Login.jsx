@@ -13,7 +13,9 @@ class Login extends Component {
             loading: false
         };
     }
-
+    componentDidMount(){
+        console.log(Cookies.get('token'))
+    }
     onNameChange = event => {
         this.setState({ userName: event.target.value });
     };

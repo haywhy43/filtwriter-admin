@@ -1,21 +1,13 @@
-import React, {Component} from 'react';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
 
 class App extends Component {
-  // constructor(){
-  //   super();
-  //   this.state={
-  //     token: null
-  //   }
-  // }
-  render(){
-    return (
-      <div className="App">
-        <h1>HEllo</h1>
-      </div>
-    );
-  }
-  
+    render() {
+        return (
+            <div className="App">
+            </div>
+        );
+    }
 }
 
 export default App;
