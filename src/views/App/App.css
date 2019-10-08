@@ -1,0 +1,72 @@
+.App{
+    display: flex;
+}
+.sidebar{
+    background-color: #38123a;
+    width: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    margin-top: auto;
+    margin-bottom: auto;
+    height: 100vh;
+}
+
+
+.logo{
+    font-size: 20px;
+    font-weight: 700;
+    /* padding: 10px; */
+    color: #fdecff;
+    text-align: center;
+    justify-self: flex-start;
+    margin-top: auto;
+}
+
+.sidebar_content{
+    list-style: none;
+    padding: 0;
+    justify-self: center;
+}
+
+.sidebar_btn{
+    color: #fdecff;
+    background-color: #724b74;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 14px;
+    margin: 20px;
+    cursor: pointer;
+    transition: 500ms;
+}
+
+.sidebar_btn:hover{
+    background: #d5b0d8;
+    color: #fdecff;
+}
+
+.logout{
+    color: #fdecff;
+    background-color: #724b74;
+    border: none;
+    padding: 10px 30px;
+    border-radius: 10px;
+    font-size: 14px;
+    margin-top: auto;
+    margin-bottom: 20px;
+    cursor: pointer;
+    transition: 500ms;
+}
+
+.logout:hover{
+    background: #d5b0d8;
+    color: #fdecff;
+}
+
+.content{
+    width: 75%;
+    height: 100vh;
+}
