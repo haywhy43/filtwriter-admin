@@ -3,19 +3,19 @@ import { Route, Redirect } from "react-router-dom";
 import { checkToken } from "../api/Auth/checkToken";
 
 const Auth = {
-    isAuthenticated : false,
+    async authenticate() {
+        var auth = false;
+        await checkToken()
+            .then(data => {
+                if (data.status === 200) {
+                    this.authenticate.auth = true;
+                }
+            })
+            .catch(error => {
+                this.authenticate.auth = false;
+            });
 
-    authenticate() {
-        checkToken().then(data => {
-            if (data.status === 200) {
-                this.isAuthenticated = true
-            }
-        });
-    },
-
-    async getAuth(){
-        await this.authenticate()
-        return this.isAuthenticated
+        return auth;
     }
 };
 
@@ -23,7 +23,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
     <Route
         {...rest}
         render={props =>
-            Auth.getAuth() ? (
+            Auth.authenticate() ? (
                 <Component {...props} />
             ) : (
                 <Redirect
