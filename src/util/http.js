@@ -23,9 +23,11 @@ http.interceptors.request.use(
 
 http.interceptors.response.use(
     response => {
+        console.log(response)
         return response;
     },
     error => {
+        
         return Promise.reject(error)
     }
 );

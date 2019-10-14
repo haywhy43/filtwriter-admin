@@ -3,6 +3,7 @@ import "./Login.css";
 import Cookies from "js-cookie";
 import getAccess from "../../api/Auth/login";
 import loader from "../../assets/img/loading.svg";
+// import { Redirect } from "react-router-dom";
 
 class Login extends Component {
     constructor() {
@@ -13,8 +14,9 @@ class Login extends Component {
             loading: false
         };
     }
-    componentDidMount(){
-        console.log(Cookies.get('token'))
+    componentDidMount() {
+        // console.log(Cookies.get("token"));
+        // console.log(this.props)
     }
     onNameChange = event => {
         this.setState({ userName: event.target.value });
@@ -25,11 +27,16 @@ class Login extends Component {
     };
 
     login = () => {
-        this.setState({loading: true})
+        this.setState({ loading: true });
         getAccess(this.state.userName, this.state.password).then(data => {
             Cookies.set("token", data.token);
-            setTimeout(()=>this.props.history.push("/"), '3000')
-            
+            setTimeout(()=>this.props.history.push('/'), '3000')
+            // console.log(<Redirect
+            //     to={{
+            //         pathname: "/"
+            //     }}
+            // />)
+
         });
     };
     render() {
@@ -52,12 +59,12 @@ class Login extends Component {
                                 Password
                             </label>
                             <input type="password" className="input_control" onChange={this.onPassChange} />
-                            
                         </div>
 
                         <div className="button_wrapper">
                             <button className="btn_login" onClick={this.login}>
-                                Login  {this.state.loading ? <img src={loader} alt="loader" width="25px" height="25px"/> : ''}
+                                Login{" "}
+                                {this.state.loading ? <img src={loader} alt="loader" width="25px" height="25px" /> : ""}
                             </button>
                         </div>
                     </div>

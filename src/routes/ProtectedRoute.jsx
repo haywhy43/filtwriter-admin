@@ -1,21 +1,25 @@
 import React from "react";
-import { Route, Redirect } from "react-router-dom";
+import { Route } from "react-router-dom";
 import { checkToken } from "../api/Auth/checkToken";
 
 const Auth = {
     async authenticate() {
-        var auth = false;
-        await checkToken()
+        var auth;
+        checkToken()
             .then(data => {
                 if (data.status === 200) {
                     this.authenticate.auth = true;
+                    return true;
+                } else {
+                    this.authenticate.auth = false;
                 }
             })
             .catch(error => {
                 this.authenticate.auth = false;
+                return false;
             });
 
-        return auth;
+        return await auth;
     }
 };
 
@@ -26,11 +30,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
             Auth.authenticate() ? (
                 <Component {...props} />
             ) : (
-                <Redirect
-                    to={{
-                        pathname: "/login"
-                    }}
-                />
+                this.props.history.push('/login')
             )
         }
     />
