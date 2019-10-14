@@ -1,0 +1,27 @@
+.article{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.create{
+    color: #fdecff;
+    background-color: #724b74;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 500ms
+}
+
+.create:hover{
+    background: #d5b0d8;
+    color: #724b74;
+}
+
+.create img{
+    margin-bottom: -5px;
+    padding-left: 5px;
+}
