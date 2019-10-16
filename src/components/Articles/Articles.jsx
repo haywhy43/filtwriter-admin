@@ -14,12 +14,13 @@ class Articles extends Component {
     componentDidMount() {
         getAllArticles().then(data => {
             this.setState({ articles: data.data });
+            console.log(this.state.articles)
         });
     }
     render() {
         return (
             <div className="article">
-                {!this.state.articles ? (
+                {this.state.articles.length ? (
                     <ArticleList />
                 ) : (
                         <button className="create">Create New Article <img src={plus} alt="plus sign" width="25px" height="25px" /></button>
