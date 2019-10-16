@@ -11,12 +11,9 @@ class Login extends Component {
         this.state = {
             userName: "",
             password: "",
-            loading: false
+            loading: false,
+            loadingText: false
         };
-    }
-    componentDidMount() {
-        // console.log(Cookies.get("token"));
-        // console.log(this.props)
     }
     onNameChange = event => {
         this.setState({ userName: event.target.value });
@@ -26,22 +23,22 @@ class Login extends Component {
         this.setState({ password: event.target.value });
     };
 
-    login = () => {
+    login = event => {
         this.setState({ loading: true });
-        getAccess(this.state.userName, this.state.password).then(data => {
-            Cookies.set("token", data.token);
-            setTimeout(()=>this.props.history.push('/'), '3000')
-            // console.log(<Redirect
-            //     to={{
-            //         pathname: "/"
-            //     }}
-            // />)
-
-        });
+        getAccess(this.state.userName, this.state.password)
+            .then(data => {
+                Cookies.set("token", data.token);
+                setTimeout(() => this.props.history.push("/"), "3000");
+                this.setState({loadingText: true})
+            })
+            .catch(error => {
+                this.setState({ loading: false });
+            });
+        event.preventDefault();
     };
     render() {
         return (
-            <div className="login">
+            <form className="login" onSubmit={this.login}>
                 <div className="login_inner">
                     <div className="head">
                         <p>Sign In</p>
@@ -51,25 +48,27 @@ class Login extends Component {
                             <label htmlFor="userName" className="input_label">
                                 User Name
                             </label>
-                            <input type="text" className="input_control" onChange={this.onNameChange} />
+                            <input type="text" name="userName" placeholder="Enter Username" className="input_control" onChange={this.onNameChange} />
                         </div>
 
                         <div className="form_group">
                             <label htmlFor="password" className="input_label">
                                 Password
                             </label>
-                            <input type="password" className="input_control" onChange={this.onPassChange} />
+                            <input type="password" name="password" placeholder="Enter Password" className="input_control" onChange={this.onPassChange} />
                         </div>
 
                         <div className="button_wrapper">
-                            <button className="btn_login" onClick={this.login}>
-                                Login{" "}
-                                {this.state.loading ? <img src={loader} alt="loader" width="25px" height="25px" /> : ""}
+                            <button className="btn_login" type="submit">
+                                Login
+                                {this.state.loading ? <img src={loader} alt="loader" width="23px" height="23px" className="loader" /> : ""}
                             </button>
                         </div>
+
+                        {this.state.loadingText ? <p className="loginSuccess">Login Succesful... Redirecting Now... </p>: ''}
                     </div>
                 </div>
-            </div>
+            </form>
         );
     }
 }

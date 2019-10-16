@@ -72,3 +72,15 @@
     background: #d5b0d8;
     color: #fdecff;
 }
+
+
+.loader{
+    margin-bottom: -5px;
+    padding-right: 5px;
+}
+
+.loginSuccess{
+    font-size: 12px;
+    color: #fdecff;
+    margin-top: 20px;
+}
