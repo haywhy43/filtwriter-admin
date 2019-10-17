@@ -1,5 +1,8 @@
+.main{
+    display: flex;
+}
 .dashboard{
-    background: #eeeeee;
+    /* background: #eeeeee; */
     height: 100%;
     margin: auto;
 }
@@ -11,12 +14,12 @@
 }
 .dashboard_card{
     background: #fdecff;
-    border: 1px solid rgb(230, 230, 230);
+    /* border: 1px solid rgb(230, 230, 230); */
     border-radius: 5px;
     padding: 20px;
     margin: 20px;
     display: flex;
-    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 3px 5px #8d5191;
     height: 170px;
     justify-content: center;
     flex-direction: column;
@@ -61,4 +64,9 @@
 .new_article:hover{
     background: #d5b0d8;
     color: #724b74;
+}
+
+.content{
+    width: 80%;
+    height: 100vh;
 }

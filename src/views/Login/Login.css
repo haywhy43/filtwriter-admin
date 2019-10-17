@@ -1,10 +1,28 @@
-.login {
-    background-color: #38123a;
+.login_main {
     height: 100vh;
+    background-color: #38123a;  
+}
+
+.header{
+    margin: 25px;
+}
+
+.header p{
+    font-size: 24px;
+    color: #fdecff
+}
+
+.secondHalf{
+    color: #f385ff;
+}
+
+.login {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100vw;
+    height: 100%;
+    position: absolute;
 }
 
 .login_inner {
@@ -84,16 +102,16 @@
     margin-top: 20px;
 }
 
-@media screen and (max-width: 560px){
-    .login-inner{
+@media screen and (max-width: 560px) {
+    .login-inner {
         width: 100%;
     }
 
-    .head{
+    .head {
         width: 120%;
     }
 
-    .body{
+    .body {
         width: 90%;
     }
 }
