@@ -10,7 +10,9 @@ class SideBar extends React.Component {
     render() {
         return (
             <div className="sidebar">
-                <p className="logo">FiltWriter</p>
+                <div className="header_sideBar">
+                    <p>Filt<span className="secondHalf">Writer</span></p>
+                </div>
 
                 <ul className="sidebar_content">
                     <li>

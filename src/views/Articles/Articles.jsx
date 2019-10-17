@@ -3,7 +3,8 @@ import getAllArticles from "../../api/Articles/all";
 import ArticleList from "../../components/ArticleList/index";
 import plus from "../../assets/img/plus.svg";
 import "./Articles.css";
-import SideBar from '../../components/SideBar/Sidebar'
+import SideBar from "../../components/SideBar/Sidebar";
+import { Link } from "react-router-dom";
 
 class Articles extends Component {
     constructor() {
@@ -26,9 +27,9 @@ class Articles extends Component {
                     {this.state.articles.length ? (
                         <ArticleList />
                     ) : (
-                        <button className="create">
+                        <Link className="create" to="/articles/new">
                             Create New Article <img src={plus} alt="plus sign" width="25px" height="25px" />
-                        </button>
+                        </Link>
                     )}
                 </div>
             </div>

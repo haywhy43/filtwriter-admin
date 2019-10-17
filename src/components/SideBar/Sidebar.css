@@ -64,3 +64,16 @@ li {
     background: #d5b0d8;
     color: #fdecff;
 }
+
+
+.header_sideBar{
+    margin: 25px;
+    margin-top: auto!important;
+    text-align: center;
+    justify-self: flex-start;
+}
+
+.header_sideBar p{
+    font-size: 20px;
+    color: #fdecff
+}

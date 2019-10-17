@@ -14,7 +14,8 @@
     border-radius: 10px;
     font-size: 16px;
     cursor: pointer;
-    transition: 500ms
+    transition: 500ms;
+    text-decoration: none;
 }
 
 .create:hover{

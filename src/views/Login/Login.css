@@ -1,10 +1,10 @@
 .login_main {
     height: 100vh;
-    background-color: #38123a;  
+    background-color: #38123a;
 }
 
 .header{
-    margin: 25px;
+    padding: 25px;
 }
 
 .header p{
@@ -21,7 +21,7 @@
     align-items: center;
     justify-content: center;
     width: 100vw;
-    height: 100%;
+    height: 80%;
     position: absolute;
 }
 
