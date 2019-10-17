@@ -29,7 +29,7 @@ class Login extends Component {
             .then(data => {
                 Cookies.set("token", data.token);
                 setTimeout(() => this.props.history.push("/"), "3000");
-                this.setState({loadingText: true})
+                this.setState({ loadingText: true });
             })
             .catch(error => {
                 this.setState({ loading: false });
@@ -48,24 +48,44 @@ class Login extends Component {
                             <label htmlFor="userName" className="input_label">
                                 User Name
                             </label>
-                            <input type="text" name="userName" placeholder="Enter Username" className="input_control" onChange={this.onNameChange} />
+                            <input
+                                type="text"
+                                name="userName"
+                                placeholder="Enter Username"
+                                className="input_control"
+                                onChange={this.onNameChange}
+                            />
                         </div>
 
                         <div className="form_group">
                             <label htmlFor="password" className="input_label">
                                 Password
                             </label>
-                            <input type="password" name="password" placeholder="Enter Password" className="input_control" onChange={this.onPassChange} />
+                            <input
+                                type="password"
+                                name="password"
+                                placeholder="Enter Password"
+                                className="input_control"
+                                onChange={this.onPassChange}
+                            />
                         </div>
 
                         <div className="button_wrapper">
                             <button className="btn_login" type="submit">
                                 Login
-                                {this.state.loading ? <img src={loader} alt="loader" width="23px" height="23px" className="loader" /> : ""}
+                                {this.state.loading ? (
+                                    <img src={loader} alt="loader" width="23px" height="23px" className="loader" />
+                                ) : (
+                                    ""
+                                )}
                             </button>
                         </div>
 
-                        {this.state.loadingText ? <p className="loginSuccess">Login Succesful... Redirecting Now... </p>: ''}
+                        {this.state.loadingText ? (
+                            <p className="loginSuccess">Login Succesful... Redirecting Now... </p>
+                        ) : (
+                            ""
+                        )}
                     </div>
                 </div>
             </form>

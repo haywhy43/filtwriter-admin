@@ -1,48 +1,48 @@
-.login{
-    background-color: #38123a ;
+.login {
+    background-color: #38123a;
     height: 100vh;
     display: flex;
     align-items: center;
-    justify-content: center; 
+    justify-content: center;
     width: 100vw;
 }
 
-.login_inner{
+.login_inner {
     width: 60%;
     display: flex;
     align-items: center;
     flex-direction: column;
 }
 
-.head{
+.head {
     border-bottom: 1px solid #fdecff;
     padding-bottom: 15px;
     text-align: center;
     width: 50%;
 }
 
-.head p{
+.head p {
     font-size: 32px;
     color: #fdecff;
 }
-.body{
+.body {
     margin-top: 20px;
     width: 40%;
 }
 
-.form_group{
+.form_group {
     width: 100%;
     display: flex;
     justify-content: center;
     flex-direction: column;
     margin-top: 20px;
 }
-.input_label{
+.input_label {
     font-size: 14px;
     color: #fdecff;
     margin-bottom: 10px;
 }
-.input_control{
+.input_control {
     padding: 10px;
     border-color: transparent;
     border-radius: 5px;
@@ -50,13 +50,13 @@
     color: #fdecff;
 }
 
-.button_wrapper{
-    margin-top:40px;
+.button_wrapper {
+    margin-top: 40px;
     display: flex;
     justify-content: center;
 }
 
-.btn_login{
+.btn_login {
     background: #724b74;
     border: none;
     font-size: 20px;
@@ -68,19 +68,32 @@
     transition: 500ms;
 }
 
-.btn_login:hover{
+.btn_login:hover {
     background: #d5b0d8;
     color: #fdecff;
 }
 
-
-.loader{
+.loader {
     margin-bottom: -5px;
     padding-right: 5px;
 }
 
-.loginSuccess{
+.loginSuccess {
     font-size: 12px;
     color: #fdecff;
     margin-top: 20px;
+}
+
+@media screen and (max-width: 560px){
+    .login-inner{
+        width: 100%;
+    }
+
+    .head{
+        width: 120%;
+    }
+
+    .body{
+        width: 90%;
+    }
 }
