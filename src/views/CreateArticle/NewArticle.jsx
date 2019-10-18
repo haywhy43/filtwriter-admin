@@ -1,10 +1,51 @@
 import React from "react";
 import SideBar from "../../components/SideBar/Sidebar";
 import "./NewArticle.css";
-import checkMark from '../../assets/img/checkmark.svg'
+import checkMark from "../../assets/img/checkmark.svg";
+import axios from "axios";
+import Cookies from "js-cookie";
 
 class NewArticle extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+            author: "",
+            title: "",
+            body: "",
+            file: ""
+        };
+    }
+
+    authorInput = event => {
+        this.setState({ author: event.target.value });
+    };
+
+    titleInput = event => {
+        this.setState({ title: event.target.value });
+    };
+
+    bodyInput = event => {
+        this.setState({ body: event.target.value });
+    };
+
+    uploadfile = event => {
+        this.setState({ file: this.refs.file.files[0] });
+    };
+
     submit = event => {
+        const formData = new FormData();
+        formData.append("author", this.state.author);
+        formData.append("title", this.state.title);
+        formData.append("body", this.state.body);
+        formData.append("picture", this.state.file);
+        axios
+            .post(process.env.REACT_APP_API_URL + "/article/upload", formData, {
+                headers: {
+                    Authorization: "Bearer " + Cookies.get("token"),
+                    "Content-Type": "multipart/form-data"
+                }
+            })
+            .then(data => console.log(data));
         event.preventDefault();
     };
     render() {
@@ -25,6 +66,8 @@ class NewArticle extends React.Component {
                                 name="Author's name"
                                 className="input"
                                 placeholder="Enter Author's name"
+                                required
+                                onChange={this.authorInput}
                             />
                         </div>
 
@@ -37,6 +80,8 @@ class NewArticle extends React.Component {
                                 name="Title"
                                 className="input"
                                 placeholder="Enter Title of the Article"
+                                required
+                                onChange={this.titleInput}
                             />
                         </div>
 
@@ -44,13 +89,36 @@ class NewArticle extends React.Component {
                             <label htmlFor="Body" className="label">
                                 Body
                             </label>
-                            <textarea name="body" cols="50" rows="30" placeholder="Write your Article" className="input"></textarea>
+                            <textarea
+                                name="body"
+                                cols="50"
+                                rows="30"
+                                placeholder="Write your Article"
+                                className="input"
+                                required
+                                onChange={this.bodyInput}
+                            ></textarea>
                         </div>
 
+                        <div className="input_group">
+                            <label htmlFor="picture" className="label">
+                                Upload cover Image
+                            </label>
+                            <input type="file" ref="file" if="file" className="input" onChange={this.uploadfile} />
+                        </div>
 
                         <div className="btns">
                             <div className="save_btn">
-                                <button className="save_btn">Save <img src={checkMark} alt="" width="18px" height="18px" style={{marginLeft: '5px'}}/></button>
+                                <button className="save_btn" type="submit">
+                                    Save{" "}
+                                    <img
+                                        src={checkMark}
+                                        alt=""
+                                        width="18px"
+                                        height="18px"
+                                        style={{ marginLeft: "5px" }}
+                                    />
+                                </button>
                             </div>
 
                             <div className="save_btn">

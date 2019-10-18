@@ -3,7 +3,6 @@ import "./Login.css";
 import Cookies from "js-cookie";
 import getAccess from "../../api/Auth/login";
 import loader from "../../assets/img/loading.svg";
-// import { Redirect } from "react-router-dom";
 
 class Login extends Component {
     constructor() {
@@ -28,7 +27,7 @@ class Login extends Component {
         getAccess(this.state.userName, this.state.password)
             .then(data => {
                 Cookies.set("token", data.token);
-                setTimeout(() => this.props.history.push("/"), "3000");
+                setTimeout(() => this.props.history.push("/dashboard"), "3000");
                 this.setState({ loadingText: true });
             })
             .catch(error => {
