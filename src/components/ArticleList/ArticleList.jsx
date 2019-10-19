@@ -8,7 +8,7 @@ class ArticleList extends React.Component {
         console.log(event.target.name);
         deleteArticle(event.target.name)
         .then(data => {this.props.history.push('/articles')})
-    };
+    }
     render() {
         return (
             <div style={{ width: "100%" }}>
