@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import getAllArticles from "../../api/Articles/all";
-import ArticleList from "../../components/ArticleList/index";
+import ArticleList from "../../components/ArticleList/ArticleList";
 import plus from "../../assets/img/plus.svg";
 import "./Articles.css";
 import SideBar from "../../components/SideBar/Sidebar";
@@ -25,7 +25,7 @@ class Articles extends Component {
                 <SideBar />
                 <div className="article">
                     {this.state.articles.length ? (
-                        <ArticleList />
+                        <ArticleList articles={this.state.articles}/>
                     ) : (
                         <Link className="create" to="/articles/new">
                             Create New Article <img src={plus} alt="plus sign" width="25px" height="25px" />

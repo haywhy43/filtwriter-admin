@@ -1,0 +1,74 @@
+.table{
+    width: 90%;
+    margin-top:20px!important;
+    margin: auto;
+}
+.thead{
+    display: flex;
+    /* justify-content: space-around; */
+    text-align:center;
+    width: 100%;
+    border-bottom: 1px solid #EAEAEA;
+    padding-bottom: 5px; 
+    margin-bottom: 5px;
+}
+
+.tbody{
+    /* width: 80%; */
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    /* justify-content: space-between; */
+    text-align: center;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #EAEAEA
+}
+
+.actions{
+    display: flex;
+    justify-content: center;
+    padding-left: 30px;
+}
+.action{
+    /* margin: 0px 10px; */
+    width: 25%;
+}
+
+.edit_btn{
+    text-decoration: none;
+    color: #fdecff;
+    background-color: #38123a;
+    font-size: 12px;
+    padding: 5px 15px;
+    border-radius: 5px;
+    margin-top: 2px;
+    transition: 500ms;
+}
+.edit_btn:hover{
+    color: #38123a;
+    background: white;
+    border: 1px solid #38123a;
+}
+.del_btn{
+    background: red;
+    color: white;
+    font-size: 12px;
+    padding: 5px 15px;
+    border: none;
+    border-radius: 5px;
+    margin-top: -5px;
+    transition: 500ms;
+    cursor: pointer;
+}
+.del_btn:hover{
+    background: white;
+    color: red;
+    border: 1px solid red
+}
+.del{
+    margin-left: 25px;
+}
+
+td{
+    padding: 5px 0px;
+}

@@ -1,11 +1,16 @@
 .article{
     display: flex;
     justify-content: center;
-    align-items: center;
+    /* align-items: center; */
     height: 100vh;
     width: 80%;
 }
-
+@media screen and (max-width: 600px){
+    .article{
+        width: 100%;
+        position: absolute;
+    }
+}
 .create{
     color: #fdecff;
     background-color: #724b74;
@@ -16,6 +21,7 @@
     cursor: pointer;
     transition: 500ms;
     text-decoration: none;
+    align-self: center;
 }
 
 .create:hover{
