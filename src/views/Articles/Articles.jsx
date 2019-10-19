@@ -16,7 +16,6 @@ class Articles extends Component {
     componentDidMount() {
         getAllArticles().then(data => {
             this.setState({ articles: data.data });
-            console.log(this.state.articles);
         });
     }
     render() {

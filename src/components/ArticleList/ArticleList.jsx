@@ -23,7 +23,7 @@ const ArticleList = props => {
                             <td style={{width: "25%"}}>{article.title}</td>
                             <td className="actions">
                                 <div className="action">
-                                    <Link className="edit_btn" to="">Edit</Link>
+                                    <Link className="edit_btn" to={'/articles/edit/' + article.id}>Edit</Link>
                                 </div>
                                 <div className="action del">
                                     <button className="del_btn">Delete</button>
