@@ -2,12 +2,17 @@ import React from "react";
 import "./ArticleList.css";
 import { Link } from "react-router-dom";
 import  deleteArticle  from "../../api/Articles/del";
+import {withRouter} from 'react-router-dom'
 
 class ArticleList extends React.Component {
+    deleteModal = () => {
+
+    }
     delete = event => {
-        console.log(event.target.name);
+        // console.log(this);
+        
         deleteArticle(event.target.name)
-        .then(data => {this.props.history.push('/articles')})
+        .then(data => {window.location.reload()})
     }
     render() {
         return (
@@ -49,4 +54,4 @@ class ArticleList extends React.Component {
     }
 }
 
-export default ArticleList;
+export default withRouter(ArticleList);

@@ -31,15 +31,22 @@ class NewArticle extends React.Component {
     uploadfile = event => {
         this.setState({ file: this.refs.file.files[0] });
     };
+ 
+    save = event => {
+        this.submitFunc(event, 'upload')
+    }
 
-    submit = event => {
+    publish = event => {
+        this.submitFunc(event, 'publish')
+    }
+    submitFunc = (event, type) => {
         const formData = new FormData();
         formData.append("author", this.state.author);
         formData.append("title", this.state.title);
         formData.append("body", this.state.body);
         formData.append("picture", this.state.file);
         axios
-            .post(process.env.REACT_APP_API_URL + "/article/upload", formData, {
+            .post(process.env.REACT_APP_API_URL + `/article/${type}`, formData, {
                 headers: {
                     Authorization: "Bearer " + Cookies.get("token"),
                     "Content-Type": "multipart/form-data"
@@ -53,7 +60,7 @@ class NewArticle extends React.Component {
             <div className="createArticle">
                 <SideBar />
                 <div className="form">
-                    <form action="Create New Article" className="main_form" method="POST" onSubmit={this.submit}>
+                    <form action="Create New Article" className="main_form" method="POST" onSubmit={this.save}>
                         <div>
                             <h1>Create A New Article</h1>
                         </div>
@@ -122,7 +129,7 @@ class NewArticle extends React.Component {
                             </div>
 
                             <div className="save_btn">
-                                <button className="save_btn">Publish</button>
+                                <button className="save_btn" onClick={this.publish}>Publish</button>
                             </div>
                         </div>
                     </form>
