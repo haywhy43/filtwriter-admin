@@ -1,24 +1,22 @@
 import React from "react";
 import "./ArticleList.css";
 import { Link } from "react-router-dom";
-import  deleteArticle  from "../../api/Articles/del";
-import {withRouter} from 'react-router-dom'
+import deleteArticle from "../../api/Articles/del";
+import { withRouter } from "react-router-dom";
 
 class ArticleList extends React.Component {
-    deleteModal = () => {
-
-    }
     delete = event => {
-        // console.log(this);
-        
-        deleteArticle(event.target.name)
-        .then(data => {window.location.reload()})
-    }
+        deleteArticle(event.target.name).then(data => {
+            window.location.reload();
+        });
+    };
     render() {
         return (
             <div style={{ width: "100%" }} className="stuff">
                 <div className="createWrapper">
-                    <Link to="/articles/new" className=" create_btn">Create New Article</Link>
+                    <Link to="/articles/new" className="create_btn">
+                        Create New Article
+                    </Link>
                 </div>
                 <table className="table">
                     <thead>

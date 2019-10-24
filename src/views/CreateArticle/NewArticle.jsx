@@ -2,8 +2,9 @@ import React from "react";
 import SideBar from "../../components/SideBar/Sidebar";
 import "./NewArticle.css";
 import checkMark from "../../assets/img/checkmark.svg";
-import axios from "axios";
-import Cookies from "js-cookie";
+import FormInput from "../../components/FormInput/FormInput";
+import TextArea from "../../components/TextArea/TextArea";
+import {uploadArticle} from "../../api/Articles/uploadArticle";
 
 class NewArticle extends React.Component {
     constructor() {
@@ -12,47 +13,46 @@ class NewArticle extends React.Component {
             author: "",
             title: "",
             body: "",
-            file: ""
+            file: "",
+            saved: false
         };
     }
-
-    authorInput = event => {
-        this.setState({ author: event.target.value });
+    // function to handle input change and store value in this.state
+    handleChange = event => {
+        const { name, value } = event.target;
+        this.setState({ [name]: value });
     };
 
-    titleInput = event => {
-        this.setState({ title: event.target.value });
-    };
-
-    bodyInput = event => {
-        this.setState({ body: event.target.value });
-    };
-
-    uploadfile = event => {
+    // function to get the file uploaded by the user in the input
+    uploadfile = () => {
         this.setState({ file: this.refs.file.files[0] });
     };
- 
+
     save = event => {
-        this.submitFunc(event, 'upload')
-    }
+        this.submitFunc(event, "upload");
+    };
 
     publish = event => {
-        this.submitFunc(event, 'publish')
-    }
+        this.submitFunc(event, "publish");
+    };
+
     submitFunc = (event, type) => {
         const formData = new FormData();
         formData.append("author", this.state.author);
         formData.append("title", this.state.title);
         formData.append("body", this.state.body);
         formData.append("picture", this.state.file);
-        axios
-            .post(process.env.REACT_APP_API_URL + `/article/${type}`, formData, {
-                headers: {
-                    Authorization: "Bearer " + Cookies.get("token"),
-                    "Content-Type": "multipart/form-data"
-                }
-            })
-            .then(data => console.log(data));
+
+        uploadArticle(type, formData).then(data => {
+            // to add checkmark to button
+            this.setState({ saved: true });
+            // to remove checkmark and redirect after 3 seconds
+            setTimeout(() => {
+                this.setState({ saved: false }); 
+                this.props.history.push("/articles");
+            }, 3000);
+           
+        });
         event.preventDefault();
     };
     render() {
@@ -64,72 +64,68 @@ class NewArticle extends React.Component {
                         <div>
                             <h1>Create A New Article</h1>
                         </div>
-                        <div className="input_group">
-                            <label htmlFor="Author's name" className="label">
-                                Author
-                            </label>
-                            <input
-                                type="text"
-                                name="Author's name"
-                                className="input"
-                                placeholder="Enter Author's name"
-                                required
-                                onChange={this.authorInput}
-                            />
-                        </div>
+                        <FormInput
+                            label="Author"
+                            placeholder="Enter Author's name"
+                            name="author"
+                            htmlFor="author"
+                            handleInput={this.handleChange}
+                            required
+                        />
 
-                        <div className="input_group">
-                            <label htmlFor="Title" className="label">
-                                Title
-                            </label>
-                            <input
-                                type="text"
-                                name="Title"
-                                className="input"
-                                placeholder="Enter Title of the Article"
-                                required
-                                onChange={this.titleInput}
-                            />
-                        </div>
+                        <FormInput
+                            label="Title"
+                            placeholder="Enter Title"
+                            name="title"
+                            htmlFor="title"
+                            handleInput={this.handleChange}
+                            required
+                        />
 
-                        <div className="input_group">
-                            <label htmlFor="Body" className="label">
-                                Body
-                            </label>
-                            <textarea
-                                name="body"
-                                cols="50"
-                                rows="30"
-                                placeholder="Write your Article"
-                                className="input"
-                                required
-                                onChange={this.bodyInput}
-                            ></textarea>
-                        </div>
+                        <TextArea
+                            label="Body"
+                            placeholder="Type in your article"
+                            cols="50"
+                            rows="30"
+                            handleInput={this.handleChange}
+                        />
 
                         <div className="input_group">
                             <label htmlFor="picture" className="label">
                                 Upload cover Image
                             </label>
-                            <input type="file" ref="file" if="file" className="input" onChange={this.uploadfile} />
+                            <input
+                                type="file"
+                                ref="file"
+                                if="file"
+                                name="picture"
+                                className="input"
+                                onChange={this.uploadfile}
+                            />
                         </div>
 
                         <div className="btns">
                             <div className="save_btn">
                                 <button className="save_btn" type="submit">
                                     Save{" "}
-                                    <img
-                                        src={checkMark}
-                                        alt=""
-                                        width="18px"
-                                        height="18px"
-                                        style={{ marginLeft: "5px" }}
-                                    />
+                                    {this.state.saved ? (
+                                        <img
+                                            src={checkMark}
+                                            alt=""
+                                            width="15px"
+                                            height="15px"
+                                            style={{ marginLeft: "5px" }}
+                                        />
+                                    ) : (
+                                        ""
+                                    )}
                                 </button>
                             </div>
 
                             <div className="save_btn">
-                                <button className="save_btn" onClick={this.publish}>Publish</button>
+                                <button className="save_btn" onClick={this.publish}>
+                                    Publish
+                                </button>
                             </div>
                         </div>
                     </form>

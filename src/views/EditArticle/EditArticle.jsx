@@ -2,9 +2,11 @@ import React from "react";
 import SideBar from "../../components/SideBar/Sidebar";
 import "./EditArticle.css";
 import getAllArticles from "../../api/Articles/all";
+
+import FormInput from "../../components/FormInput/FormInput";
+import TextArea from "../../components/TextArea/TextArea";
 import checkMark from "../../assets/img/checkmark.svg";
-import Cookies from "js-cookie";
-import axios from "axios";
+import { editArticle } from "../../api/Articles/uploadArticle";
 
 class EditArticle extends React.Component {
     constructor(props) {
@@ -13,7 +15,8 @@ class EditArticle extends React.Component {
             author: "",
             title: "",
             body: "",
-            file: ""
+            file: "",
+            saved: ""
         };
     }
 
@@ -24,7 +27,6 @@ class EditArticle extends React.Component {
                     this.setState({ author: article.author });
                     this.setState({ title: article.title });
                     this.setState({ body: article.body });
-                    // this.setState({ file: article.profile_id });
                 }
             });
         });
@@ -47,17 +49,15 @@ class EditArticle extends React.Component {
         formData.append("body", this.state.body);
         formData.append("picture", this.state.file);
         formData.append("id", this.props.match.params.id);
-        axios
-            .post(process.env.REACT_APP_API_URL + "/article/edit", formData, {
-                headers: {
-                    Authorization: "Bearer " + Cookies.get("token"),
-                    "Content-Type": "multipart/form-data"
-                }
-            })
-            .then(data => console.log(data));
-
-        // console.log(this.props.match.params.id)
-
+        editArticle(formData).then(data => {
+            // to add checkmark to button
+            this.setState({ saved: true });
+            // to remove checkmark and redirect after 3 seconds
+            setTimeout(() => {
+                this.setState({ saved: false });
+                this.props.history.push("/articles");
+            }, 3000);
+        });
         event.preventDefault();
     };
     render() {
@@ -69,51 +69,36 @@ class EditArticle extends React.Component {
                         <div>
                             <h1>Edit Article</h1>
                         </div>
-                        <div className="input_group">
-                            <label htmlFor="author" className="label">
-                                Author
-                            </label>
-                            <input
-                                type="text"
-                                name="author"
-                                className="input"
-                                // placeholder={this.state.editingArticle.author}
-                                required
-                                onChange={this.handleChange}
-                                value={this.state.author}
-                            />
-                        </div>
+                        <FormInput
+                            label="Author"
+                            placeholder="Enter Author's name"
+                            name="author"
+                            htmlFor="author"
+                            handleInput={this.handleChange}
+                            value={this.state.author}
+                            required
+                        />
 
-                        <div className="input_group">
-                            <label htmlFor="title" className="label">
-                                Title
-                            </label>
-                            <input
-                                type="text"
-                                name="title"
-                                className="input"
-                                placeholder="Enter Title of the Article"
-                                required
-                                onChange={this.handleChange}
-                                value={this.state.title}
-                            />
-                        </div>
+                        <FormInput
+                            label="Title"
+                            placeholder="Enter Title"
+                            name="title"
+                            htmlFor="title"
+                            handleInput={this.handleChange}
+                            required
+                            value={this.state.title}
+                        />
 
-                        <div className="input_group">
-                            <label htmlFor="body" className="label">
-                                Body
-                            </label>
-                            <textarea
-                                name="body"
-                                cols="50"
-                                rows="30"
-                                placeholder="Write your Article"
-                                className="input"
-                                required
-                                onChange={this.handleChange}
-                                value={this.state.body}
-                            ></textarea>
-                        </div>
+                        <TextArea
+                            label="Body"
+                            name="body"
+                            htmlFor="body"
+                            placeholder="Type in your article"
+                            cols="50"
+                            rows="30"
+                            handleInput={this.handleChange}
+                            value={this.state.body}
+                        />
 
                         <div className="input_group">
                             <label htmlFor="picture" className="label">
@@ -123,7 +108,6 @@ class EditArticle extends React.Component {
                                 type="file"
                                 ref="file"
                                 if="file"
-                                // value={this.state.editingArticle.profile_id}
                                 className="input"
                                 onChange={this.uploadfile}
                             />
@@ -133,13 +117,17 @@ class EditArticle extends React.Component {
                             <div className="save_btn">
                                 <button className="save_btn" type="submit">
                                     Save
-                                    {/* <img
-                                        src={checkMark}
-                                        alt=""
-                                        width="18px"
-                                        height="18px"
-                                        style={{ marginLeft: "5px" }}
-                                    /> */}
+                                    {this.state.saved ? (
+                                        <img
+                                            src={checkMark}
+                                            alt=""
+                                            width="15px"
+                                            height="15px"
+                                            style={{ marginLeft: "5px" }}
+                                        />
+                                    ) : (
+                                        ""
+                                    )}
                                 </button>
                             </div>
 
