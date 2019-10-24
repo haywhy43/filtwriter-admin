@@ -17,25 +17,33 @@ class SideBar extends React.Component {
     };
 
     toggleMenu = () => {
-        const sideBar = document.getElementsByClassName('sidebar')[0]
+        const sideBar = document.getElementsByClassName("sidebar")[0];
         if (this.state.openMenu) {
             this.setState({ openMenu: false });
-            sideBar.style.display = "none"
+            sideBar.style.display = "none";
         } else {
             this.setState({ openMenu: true });
-            sideBar.style.display = "flex"
+            sideBar.style.display = "flex";
         }
     };
     render() {
         return (
             <div className="main_sidebar">
-                <div className="hamburger">
-                    {this.state.openMenu ? (
-                        <img src={cancelIcon} alt="" width="30px" height="30px" onClick={this.toggleMenu} />
-                    ) : (
-                        <img src={menuIcon} alt="" width="30px" height="30px" onClick={this.toggleMenu} />
-                    )}
+                <div>
+                    <div className="hamburger">
+                        {this.state.openMenu ? (
+                            <img src={cancelIcon} alt="" width="30px" height="30px" onClick={this.toggleMenu} />
+                        ) : (
+                            <img src={menuIcon} alt="" width="30px" height="30px" onClick={this.toggleMenu} />
+                        )}
+                        <div className="header_sideBar push">
+                            <p>
+                                Filt<span className="secondHalf">Writer</span>
+                            </p>
+                        </div>
+                    </div>
                 </div>
+
                 <div className="sidebar">
                     <div className="header_sideBar">
                         <p>

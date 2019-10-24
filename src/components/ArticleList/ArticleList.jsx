@@ -16,7 +16,10 @@ class ArticleList extends React.Component {
     }
     render() {
         return (
-            <div style={{ width: "100%" }}>
+            <div style={{ width: "100%" }} className="stuff">
+                <div className="createWrapper">
+                    <Link to="/articles/new" className=" create_btn">Create New Article</Link>
+                </div>
                 <table className="table">
                     <thead>
                         <tr className="thead">

@@ -84,6 +84,8 @@ li {
 .hamburger{
     display: none;
     position: absolute;
+
+    /* bottom: 0; */
     z-index: 9999;
 }
 @media screen and (max-width: 600px){
@@ -99,4 +101,16 @@ li {
         display: flex;
         padding: 20px;
     }
+
+    .hamburger .header_sideBar{
+        z-index: 400;
+    }
+}
+
+.push{
+    margin-left: 90px
+}
+
+.hamburger .header_sideBar p{
+    color :black
 }

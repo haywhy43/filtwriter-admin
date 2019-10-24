@@ -1,19 +1,19 @@
-.table{
+.table {
     width: 90%;
-    margin-top:20px!important;
+    margin-top: 10px !important;
     margin: auto;
 }
-.thead{
+.thead {
     display: flex;
     /* justify-content: space-around; */
-    text-align:center;
+    text-align: center;
     width: 100%;
-    border-bottom: 1px solid #EAEAEA;
-    padding-bottom: 5px; 
+    border-bottom: 1px solid #eaeaea;
+    padding-bottom: 5px;
     margin-bottom: 5px;
 }
 
-.tbody{
+.tbody {
     /* width: 80%; */
     margin-left: auto;
     margin-right: auto;
@@ -21,20 +21,20 @@
     /* justify-content: space-between; */
     text-align: center;
     margin-bottom: 10px;
-    border-bottom: 1px solid #EAEAEA
+    border-bottom: 1px solid #eaeaea;
 }
 
-.actions{
+.actions {
     display: flex;
     justify-content: center;
     padding-left: 30px;
 }
-.action{
+.action {
     /* margin: 0px 10px; */
     width: 25%;
 }
 
-.edit_btn{
+.edit_btn {
     text-decoration: none;
     color: #fdecff;
     background-color: #38123a;
@@ -44,12 +44,12 @@
     margin-top: 2px;
     transition: 500ms;
 }
-.edit_btn:hover{
+.edit_btn:hover {
     color: #38123a;
     background: white;
     border: 1px solid #38123a;
 }
-.del_btn{
+.del_btn {
     background: red;
     color: white;
     font-size: 12px;
@@ -60,15 +60,68 @@
     transition: 500ms;
     cursor: pointer;
 }
-.del_btn:hover{
+.del_btn:hover {
     background: white;
     color: red;
-    border: 1px solid red
+    border: 1px solid red;
 }
-.del{
+.del {
     margin-left: 25px;
 }
 
-td{
+td {
     padding: 5px 0px;
+}
+
+.stuff {
+    margin-top: 10px;
+}
+
+@media screen and (max-width: 600px) {
+    .stuff {
+        margin-top: 60px;
+    }
+    .actions {
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+    .edit_btn {
+        margin-top: 0;
+        margin-bottom: 20px;
+    }
+
+    .del {
+        margin: 0px;
+    }
+
+    .del_btn {
+        margin-top: 10px;
+    }
+
+    .table {
+        width: 100%;
+    }
+}
+
+.create_btn{
+    text-decoration: none;
+    color: #fdecff;
+    background-color: #38123a;
+    font-size: 14px;
+    padding: 5px 15px;
+    border-radius: 5px;
+    margin-top: 2px;
+    transition: 500ms;
+    border: none;
+    cursor: pointer;
+}
+
+.create_btn:hover {
+    color: #38123a;
+    background: white;
+    border: 1px solid #38123a;
+}
+
+.createWrapper{
+    padding: 10px 20px;
 }
