@@ -58,7 +58,8 @@
     margin-top: auto;
     margin-bottom: 20px;
     cursor: pointer;
-    transition: 500ms
+    transition: 500ms;
+    text-decoration: none;
 }
 
 .new_article:hover{

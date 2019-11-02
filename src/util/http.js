@@ -17,21 +17,18 @@ http.interceptors.request.use(
         return config;
     },
     error => {
+        console.log("token")
         Promise.reject(error);
     }
 );
 
 http.interceptors.response.use(
     response => {
-        // console.log(response)
         return response;
     },
     error => {
-        return Promise.reject(error)
+        return Promise.reject(error);
     }
 );
 
-
 export default http;
-
-

@@ -27,7 +27,7 @@ class Login extends Component {
         getAccess(this.state.userName, this.state.password)
             .then(data => {
                 Cookies.set("token", data.token);
-                setTimeout(() => this.props.history.push("/dashboard"), "3000");
+                setTimeout(() => this.props.history.push("/dashboard"), 3000);
                 this.setState({ loadingText: true });
             })
             .catch(error => {
@@ -35,11 +35,17 @@ class Login extends Component {
             });
         event.preventDefault();
     };
+
+    componentDidMount() {
+        // console.log(Cookies.get("token"));
+    }
     render() {
         return (
             <div className="login_main">
                 <div className="header">
-                    <p>Filt<span className="secondHalf">Writer</span></p>
+                    <p>
+                        Filt<span className="secondHalf">Writer</span>
+                    </p>
                 </div>
                 <form className="login" onSubmit={this.login}>
                     <div className="login_inner">
