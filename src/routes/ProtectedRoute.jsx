@@ -2,6 +2,7 @@ import React from "react";
 import { Route, Redirect } from "react-router-dom";
 import { checkToken } from "../api/Auth/checkToken";
 import Cookies from "js-cookie";
+import { withRouter } from "react-router-dom";
 
 class PrivateRoute extends React.Component {
     constructor() {
@@ -11,15 +12,19 @@ class PrivateRoute extends React.Component {
         };
     }
     componentDidMount() {
-        // console.log(Cookies.get("token"))
+        // console.log(Cookies.get("token"));
         checkToken()
             .then(data => {
                 this.setState({ redirect: true });
             })
             .catch(error => {
                 this.setState({ redirect: false });
-                Cookies.remove("token");
+                // Cookies.remove("token");
             });
+    }
+
+    confirm = () => {
+
     }
     render() {
         const { component: Component, ...rest } = this.props;
@@ -31,4 +36,4 @@ class PrivateRoute extends React.Component {
         );
     }
 }
-export default PrivateRoute;
+export default withRouter(PrivateRoute);

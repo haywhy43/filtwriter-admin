@@ -1,3 +1,4 @@
+import React from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
 
@@ -12,12 +13,12 @@ const token = Cookies.get("token");
 http.interceptors.request.use(
     config => {
         if (token) {
+            console.log(token);
             config.headers.Authorization = `Bearer ${token}`;
         }
         return config;
     },
     error => {
-        console.log("token")
         Promise.reject(error);
     }
 );

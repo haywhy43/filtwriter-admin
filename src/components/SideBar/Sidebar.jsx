@@ -13,7 +13,7 @@ class SideBar extends React.Component {
         };
     }
     logout = () => {
-        Cookies.remove("token");
+        Cookies.set("token", null);
     };
 
     toggleMenu = () => {

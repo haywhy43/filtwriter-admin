@@ -1,3 +1,31 @@
 .App{
     display: flex;
+    background: #38123a;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+p{
+    color: white;
+    font-size: 32px
+}
+
+.center{
+    text-align: center;
+}
+
+.dots{
+    display: flex;
+    justify-content: center;
+}
+
+.dot{
+    
+    display: none;
+}
+
+.dots p {
+    font-size: 40px;
+    padding: 0px 5px;
 }
