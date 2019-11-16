@@ -3,6 +3,8 @@ import "./ArticleList.css";
 import { Link } from "react-router-dom";
 import deleteArticle from "../../api/Articles/del";
 import { withRouter } from "react-router-dom";
+import check from "../../assets/img/success.svg";
+import unCheck from "../../assets/img/cancel-mark.svg";
 
 class ArticleList extends React.Component {
     delete = event => {
@@ -20,20 +22,22 @@ class ArticleList extends React.Component {
                 </div>
                 <table className="table">
                     <thead>
-                        <tr className="thead">
-                            <th style={{ width: "25%" }}>SN</th>
-                            <th style={{ width: "25%" }}>Author</th>
-                            <th style={{ width: "25%" }}>Title</th>
-                            <th style={{ width: "25%" }}>Actions</th>
+                        <tr className="thead something">
+                            <th>SN</th>
+                            <th>Author</th>
+                            <th>Title</th>
+                            <th>Published</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
 
                     <tbody>
                         {this.props.articles.map((article, i) => (
                             <tr key={article.id} className="tbody">
-                                <td style={{ width: "25%" }}>{i + 1}</td>
-                                <td style={{ width: "25%" }}>{article.author}</td>
-                                <td style={{ width: "25%" }}>{article.title}</td>
+                                <td>{i + 1}</td>
+                                <td>{article.author}</td>
+                                <td>{article.title}</td>
+                                <td>{article.is_published ? <img src={check} /> : <img src={unCheck} />}</td>
                                 <td className="actions">
                                     <div className="action">
                                         <Link className="edit_btn" to={"/articles/edit/" + article.id}>

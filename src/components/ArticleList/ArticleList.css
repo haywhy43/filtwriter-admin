@@ -2,38 +2,40 @@
     width: 90%;
     margin-top: 10px !important;
     margin: auto;
+    overflow: auto;
 }
 .thead {
-    display: flex;
+    /* display: flex; */
     /* justify-content: space-around; */
     text-align: center;
     width: 100%;
-    border-bottom: 1px solid #eaeaea;
+    border-bottom: 1px solid black;
     padding-bottom: 5px;
-    margin-bottom: 5px;
+    margin-bottom: 10px!important;
 }
+
 
 .tbody {
     /* width: 80%; */
     margin-left: auto;
     margin-right: auto;
-    display: flex;
+    /* display: flex; */
     /* justify-content: space-between; */
     text-align: center;
     margin-bottom: 10px;
     border-bottom: 1px solid #eaeaea;
 }
 
+.tbody img{
+    width: 20px;
+    height: 20px;
+}
+
 .actions {
     display: flex;
     justify-content: center;
-    padding-left: 30px;
+    /* padding-left: 30px; */
 }
-.action {
-    /* margin: 0px 10px; */
-    width: 25%;
-}
-
 .edit_btn {
     text-decoration: none;
     color: #fdecff;
