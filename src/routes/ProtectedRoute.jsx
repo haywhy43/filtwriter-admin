@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
 import { checkToken } from "../api/Auth/checkToken";
-import Cookies from "js-cookie";
+// import Cookies from "js-cookie";
 import { withRouter } from "react-router-dom";
 
 class PrivateRoute extends React.Component {
