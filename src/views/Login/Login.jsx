@@ -11,7 +11,8 @@ class Login extends Component {
             userName: "",
             password: "",
             loading: false,
-            loadingText: false
+            success: false,
+            error: false
         };
     }
     onNameChange = event => {
@@ -28,24 +29,13 @@ class Login extends Component {
             .then(data => {
                 Cookies.set("token", data.token);
                 setTimeout(() => this.props.history.push("/"), 3000);
-                this.setState({ loadingText: true });
+                this.setState({ success: true });
+                this.setState({ loading: false });
             })
             .catch(error => {
+                this.setState({ error: true });
                 this.setState({ loading: false });
             });
-        // const user = {
-        //     name: this.state.userName,
-        //     password: this.state.password
-        // };
-        // fetch(process.env.REACT_APP_API_URL + "/login", {
-        //     method: "POST",
-        //     body: JSON.stringify(user)
-        // }).then(data => {
-        //     console.log(data);
-        //     Cookies.set("token", data.token);
-        //         setTimeout(() => this.props.history.push("/"), 3000);
-        //         this.setState({ loadingText: true });
-        // });
         event.preventDefault();
     };
 
@@ -75,7 +65,6 @@ class Login extends Component {
                                     onChange={this.onNameChange}
                                 />
                             </div>
-
                             <div className="form_group">
                                 <label htmlFor="password" className="input_label">
                                     Password
@@ -88,7 +77,6 @@ class Login extends Component {
                                     onChange={this.onPassChange}
                                 />
                             </div>
-
                             <div className="button_wrapper">
                                 <button className="btn_login" type="submit">
                                     Login
@@ -99,9 +87,15 @@ class Login extends Component {
                                     )}
                                 </button>
                             </div>
-
                             {this.state.loadingText ? (
                                 <p className="loginSuccess">Login Succesful... Redirecting Now... </p>
+                            ) : (
+                                ""
+                            )}
+                            {this.state.error ? (
+                                <p className="loginSuccess">
+                                    Sorry Unable to login, Check your credentials and try again
+                                </p>
                             ) : (
                                 ""
                             )}
