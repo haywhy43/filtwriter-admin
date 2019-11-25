@@ -85,6 +85,7 @@ class NewArticle extends React.Component {
                         <TextArea
                             label="Body"
                             placeholder="Type in your article"
+                            name="body"
                             cols="50"
                             rows="30"
                             handleInput={this.handleChange}
