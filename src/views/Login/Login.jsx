@@ -28,7 +28,8 @@ class Login extends Component {
         getAccess(this.state.userName, this.state.password)
             .then(data => {
                 Cookies.set("token", data.token);
-                setTimeout(() => this.props.history.push("/"), 3000);
+                // window.localStorage.setItem("token", data.token)
+                setTimeout(() => this.props.history.push("/"), 1000);
                 this.setState({ success: true });
                 this.setState({ loading: false });
             })
@@ -36,20 +37,6 @@ class Login extends Component {
                 this.setState({ error: true });
                 this.setState({ loading: false });
             });
-
-        // const user = {	
-        //     name: this.state.userName,	
-        //     password: this.state.password	
-        // };	
-        // fetch(process.env.REACT_APP_API_URL + "/login", {	
-        //     method: "POST",	
-        //     body: JSON.stringify(user)	
-        // }).then(data => {	
-        //     console.log(data);	
-        //     Cookies.set("token", data.token);	
-        //         setTimeout(() => this.props.history.push("/"), 3000);	
-        //         this.setState({ loadingText: true });	
-        // });
         event.preventDefault();
     };
 

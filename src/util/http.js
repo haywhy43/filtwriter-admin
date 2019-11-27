@@ -1,19 +1,19 @@
 import axios from "axios";
 import Cookies from "js-cookie";
+import React from "react";
 
 const http = axios.create({
     baseURL: process.env.REACT_APP_API_URL,
     timeout: 10000,
-    headers: { "Content-Type": "application/json" },
-    // withCredentials: true
+    headers: { "Content-Type": "application/json" }
 });
 
-const token = Cookies.get("token");
+
 
 http.interceptors.request.use(
     config => {
+        const token = Cookies.get("token");
         if (token) {
-            // console.log(token);
             config.headers.Authorization = `Bearer ${token}`;
         }
         return config;
@@ -32,4 +32,4 @@ http.interceptors.response.use(
     }
 );
 
-export default http;
+export { http };

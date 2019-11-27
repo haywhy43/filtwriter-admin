@@ -1,8 +1,7 @@
-import http from '../../util/http';
-
-export async function checkToken(){
-    const data = http.get('/')
-    return data
+import { http } from "../../util/http";
+async function checkToken() {
+    const data = await http.get("/");
+    return data;
 }
 
-// export default { checkToken }
+export { checkToken };

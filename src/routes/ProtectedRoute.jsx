@@ -1,7 +1,6 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
 import { checkToken } from "../api/Auth/checkToken";
-// import Cookies from "js-cookie";
 import { withRouter } from "react-router-dom";
 
 class PrivateRoute extends React.Component {
@@ -11,15 +10,13 @@ class PrivateRoute extends React.Component {
             redirect: true
         };
     }
-    componentDidMount() {
-        // console.log(Cookies.get("token"));
+    componentWillMount() {
         checkToken()
             .then(data => {
                 this.setState({ redirect: true });
             })
             .catch(error => {
                 this.setState({ redirect: false });
-                // Cookies.remove("token");
             });
     }
 
