@@ -37,7 +37,7 @@ class ArticleList extends React.Component {
                                 <td>{i + 1}</td>
                                 <td>{article.author}</td>
                                 <td>{article.title}</td>
-                                <td>{article.is_published ? <img src={check} /> : <img src={unCheck} />}</td>
+                                <td>{article.is_published ? <img src={check} alt="confirmed Icon"/> : <img src={unCheck} alt="unconfirmed Icon"/>}</td>
                                 <td className="actions">
                                     <div className="action">
                                         <Link className="edit_btn" to={"/articles/edit/" + article.id}>

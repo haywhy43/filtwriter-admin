@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./App.css";
-import Cookies from 'js-cookie'
 
 class App extends Component {
     constructor() {
@@ -23,7 +22,6 @@ class App extends Component {
                 i = 0;
             }
         }, 1000);
-        // console.log(Cookies.get("token"))
         setTimeout(()=>this.props.history.push('/dashboard'), 5000)
     }
 

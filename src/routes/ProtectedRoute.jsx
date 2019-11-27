@@ -10,7 +10,7 @@ class PrivateRoute extends React.Component {
             redirect: true
         };
     }
-    componentWillMount() {
+    componentDidMount() {
         checkToken()
             .then(data => {
                 this.setState({ redirect: true });
