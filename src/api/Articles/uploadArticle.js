@@ -13,6 +13,17 @@ async function uploadArticle(type, formData) {
     return data;
 }
 
+
+async function uploadImage(formData) {
+    const data = await axios.post(process.env.REACT_APP_API_URL + `/image/upload`, formData, {
+        headers: {
+            Authorization: "Bearer " + Cookies.get("token")
+        }
+    });
+
+    return data;
+}
+
 async function editArticle(formData) {
     const data = await axios.post(process.env.REACT_APP_API_URL + "/article/edit", formData, {
         headers: {
@@ -24,4 +35,4 @@ async function editArticle(formData) {
     return data;
 }
 
-export {uploadArticle, editArticle};
+export {uploadArticle, editArticle, uploadImage};

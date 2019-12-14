@@ -24,18 +24,15 @@ class Login extends Component {
     };
 
     login = event => {
-        this.setState({ loading: true });
+        this.setState({ loading: true, error: false, success: true });
         getAccess(this.state.userName, this.state.password)
             .then(data => {
                 Cookies.set("token", data.token);
-                // window.localStorage.setItem("token", data.token)
                 setTimeout(() => this.props.history.push("/"), 1000);
-                this.setState({ success: true });
-                this.setState({ loading: false });
+                this.setState({ success: true, loading: false });
             })
             .catch(error => {
-                this.setState({ error: true });
-                this.setState({ loading: false });
+                this.setState({ error: true, loading: false });
             });
         event.preventDefault();
     };

@@ -4,7 +4,8 @@ import "./NewArticle.css";
 import checkMark from "../../assets/img/checkmark.svg";
 import FormInput from "../../components/FormInput/FormInput";
 import TextArea from "../../components/TextArea/TextArea";
-import {uploadArticle} from "../../api/Articles/uploadArticle";
+import { uploadArticle } from "../../api/Articles/uploadArticle";
+
 
 class NewArticle extends React.Component {
     constructor() {
@@ -18,7 +19,7 @@ class NewArticle extends React.Component {
         };
     }
     // function to handle input change and store value in this.state
-    handleChange = event => {
+    handleChange = (event) => {
         const { name, value } = event.target;
         this.setState({ [name]: value });
     };
@@ -28,11 +29,11 @@ class NewArticle extends React.Component {
         this.setState({ file: this.refs.file.files[0] });
     };
 
-    save = event => {
+    save = (event) => {
         this.submitFunc(event, "upload");
     };
 
-    publish = event => {
+    publish = (event) => {
         this.submitFunc(event, "publish");
     };
 
@@ -43,15 +44,14 @@ class NewArticle extends React.Component {
         formData.append("body", this.state.body);
         formData.append("picture", this.state.file);
 
-        uploadArticle(type, formData).then(data => {
+        uploadArticle(type, formData).then((data) => {
             // to add checkmark to button
             this.setState({ saved: true });
             // to remove checkmark and redirect after 3 seconds
             setTimeout(() => {
-                this.setState({ saved: false }); 
+                this.setState({ saved: false });
                 this.props.history.push("/articles");
             }, 3000);
-           
         });
         event.preventDefault();
     };

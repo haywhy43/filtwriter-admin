@@ -2,6 +2,7 @@ import React from "react";
 import { Route, Redirect } from "react-router-dom";
 import { checkToken } from "../api/Auth/checkToken";
 import { withRouter } from "react-router-dom";
+import Cookies from "js-cookie"
 
 class PrivateRoute extends React.Component {
     constructor() {
@@ -17,6 +18,7 @@ class PrivateRoute extends React.Component {
             })
             .catch(error => {
                 this.setState({ redirect: false });
+                Cookies.remove("token")
             });
     }
 

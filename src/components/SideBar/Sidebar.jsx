@@ -32,9 +32,9 @@ class SideBar extends React.Component {
                 <div>
                     <div className="hamburger">
                         {this.state.openMenu ? (
-                            <img src={cancelIcon} alt="" width="30px" height="30px" onClick={this.toggleMenu} />
+                            <img src={cancelIcon} alt="cancel Icon"  width="30px" height="30px" onClick={this.toggleMenu} />
                         ) : (
-                            <img src={menuIcon} alt="" width="30px" height="30px" onClick={this.toggleMenu} />
+                            <img src={menuIcon} alt="Hamburger Icon" width="30px" height="30px" onClick={this.toggleMenu} />
                         )}
                         <div className="header_sideBar push">
                             <p>
@@ -44,7 +44,7 @@ class SideBar extends React.Component {
                     </div>
                 </div>
 
-                <div className="sidebar">
+                <div className="sidebar ">
                     <div className="header_sideBar">
                         <p>
                             Filt<span className="secondHalf">Writer</span>
