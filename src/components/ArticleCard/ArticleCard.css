@@ -1,0 +1,80 @@
+.card{
+    max-width: 350px;
+    border: 1px solid rgb(184, 180, 180);
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+@media screen and (min-width: 600px){
+    .card{
+        margin-right: 10px;
+    }
+}
+
+.card-img{
+    width: 100%;
+    max-height: 200px
+}
+
+.card-body{
+    padding: 20px;
+}
+
+.card-title{
+    font-size: 24px;
+    color: #570061;
+    font-weight: 900;
+    margin-top: 10px;
+}
+
+.little-info{
+    display: flex;
+    justify-content: space-between;
+}
+
+.little-info p{
+    font-size: 12px;
+    opacity: 0.6;
+}
+
+.actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    /* padding-left: 30px; */
+}
+
+.edit_btn {
+    text-decoration: none;
+    color: #fdecff;
+    background-color: #38123a;
+    font-size: 12px;
+    padding: 5px 15px;
+    border-radius: 5px;
+    margin-top: 2px;
+    transition: 500ms;
+}
+.edit_btn:hover {
+    color: #38123a;
+    background: white;
+    border: 1px solid #38123a;
+}
+.del_btn {
+    background: red;
+    color: white;
+    font-size: 12px;
+    padding: 5px 15px;
+    border: none;
+    border-radius: 5px;
+    margin-top: -5px;
+    transition: 500ms;
+    cursor: pointer;
+}
+.del_btn:hover {
+    background: white;
+    color: red;
+    border: 1px solid red;
+}
+.del {
+    margin-left: 25px;
+}

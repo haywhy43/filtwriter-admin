@@ -4,11 +4,21 @@
     /* align-items: center; */
     height: 100vh;
     width: 80%;
+    padding: 0px 20px;
 }
 @media screen and (max-width: 600px) {
     .article {
-        width: 100%;
+        width: 100% !important;
         position: absolute;
+        margin-top: 30px;
+    }
+    .card-wrapper {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    .createWrapper {
+        padding: 30px 0px !important;
     }
 }
 .create {
@@ -45,10 +55,13 @@
     font-size: 14px;
     padding: 5px 15px;
     border-radius: 5px;
-    margin-top: 2px;
+    /* margin-top: 2px; */
     transition: 500ms;
     border: none;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .create_btn:hover {
@@ -58,5 +71,15 @@
 }
 
 .createWrapper {
-    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 20px;
+}
+
+.createWrapper h2 {
+    font-size: 34px;
+}
+
+.card-wrapper {
+    display: flex;
 }

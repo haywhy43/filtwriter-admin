@@ -7,11 +7,13 @@ import check from "../../assets/img/success.svg";
 import unCheck from "../../assets/img/cancel-mark.svg";
 
 class ArticleList extends React.Component {
+    
     delete = event => {
         deleteArticle(event.target.name).then(data => {
             window.location.reload();
         });
     };
+
     render() {
         return (
             <div style={{ width: "100%" }} className="stuff">
