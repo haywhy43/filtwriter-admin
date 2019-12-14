@@ -14,7 +14,7 @@ class Articles extends Component {
         };
     }
     componentDidMount() {
-        getAllArticles().then(data => {
+        getAllArticles().then((data) => {
             this.setState({ articles: data.data });
         });
     }
@@ -22,9 +22,15 @@ class Articles extends Component {
         return (
             <div className="d-flex">
                 <SideBar />
+
                 <div className="article">
+                    <div className="createWrapper">
+                        <Link to="/articles/new" className="create_btn">
+                            Create New Article
+                        </Link>
+                    </div>
                     {this.state.articles.length ? (
-                        <ArticleList articles={this.state.articles}/>
+                        <ArticleList articles={this.state.articles} />
                     ) : (
                         <Link className="create" to="/articles/new">
                             Create New Article <img src={plus} alt="plus sign" width="25px" height="25px" />

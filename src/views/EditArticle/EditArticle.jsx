@@ -40,7 +40,7 @@ class EditArticle extends React.Component {
         return (
             <div className="edit">
                 <SideBar />
-                <div className="form">
+                <div className="form-edit">
                     <CKEditor
                         editor={InlineEditor}
                         config={{ extraPlugins: [MyCustomUploadAdapterPlugin] }}
