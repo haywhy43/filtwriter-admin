@@ -1,4 +1,12 @@
-p{
-    color: black!important;
-    font-size: 16px
+.ck{
+    /* border: .5px solid black!important; */
+    width: 80%;
+    margin: auto;
+    margin-top: 40px;
+}
+
+.Nar{
+    border: 0px !important;
+    display: flex;
+    min-height: 100vh;
 }

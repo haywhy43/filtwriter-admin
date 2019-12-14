@@ -3,7 +3,6 @@ import SideBar from "../../components/SideBar/Sidebar";
 import "./NewArticle.css";
 import checkMark from "../../assets/img/checkmark.svg";
 import FormInput from "../../components/FormInput/FormInput";
-import TextArea from "../../components/TextArea/TextArea";
 import { uploadArticle } from "../../api/Articles/uploadArticle";
 
 
@@ -13,7 +12,6 @@ class NewArticle extends React.Component {
         this.state = {
             author: "",
             title: "",
-            body: "",
             file: "",
             saved: false
         };
@@ -41,7 +39,6 @@ class NewArticle extends React.Component {
         const formData = new FormData();
         formData.append("author", this.state.author);
         formData.append("title", this.state.title);
-        formData.append("body", this.state.body);
         formData.append("picture", this.state.file);
 
         uploadArticle(type, formData).then((data) => {
@@ -82,15 +79,6 @@ class NewArticle extends React.Component {
                             required
                         />
 
-                        <TextArea
-                            label="Body"
-                            placeholder="Type in your article"
-                            name="body"
-                            cols="50"
-                            rows="30"
-                            handleInput={this.handleChange}
-                        />
-
                         <div className="input_group">
                             <label htmlFor="picture" className="label">
                                 Upload cover Image
@@ -120,12 +108,6 @@ class NewArticle extends React.Component {
                                     ) : (
                                         ""
                                     )}
-                                </button>
-                            </div>
-
-                            <div className="save_btn">
-                                <button className="save_btn" onClick={this.publish}>
-                                    Publish
                                 </button>
                             </div>
                         </div>

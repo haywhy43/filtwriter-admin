@@ -30,13 +30,13 @@ class App extends Component {
             <div className=" animated infinte fadeInUp">
                 <div className="App">
                     <div className="center">
-                        <p>
+                        <p className="p">
                             Filt<span className="secondHalf">Writer</span>
                         </p>
                         <div className="dots">
-                            <p className="">.</p>
-                            <p className="dot">.</p>
-                            <p className="dot">.</p>
+                            <p className="p">.</p>
+                            <p className="dot p">.</p>
+                            <p className="dot p">.</p>
                         </div>
                     </div>
                 </div>

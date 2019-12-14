@@ -2,32 +2,37 @@ import React, { Component } from "react";
 import CKEditor from "@ckeditor/ckeditor5-react";
 import InlineEditor from "@ckeditor/ckeditor5-build-inline";
 import "./nar.css";
-import Cookies from "js-cookie";
 import { MyUploadAdapter } from "../../util/uploadAdapter";
+import SideBar from "../../components/SideBar/Sidebar";
 
 function MyCustomUploadAdapterPlugin(editor) {
     editor.plugins.get("FileRepository").createUploadAdapter = (loader) => {
-        // Configure the URL to the upload script in your back-end here!
         return new MyUploadAdapter(loader);
     };
 }
 
+let timeout = null
+
 class Nar extends Component {
+
     render() {
         return (
             <div className="Nar">
+                <SideBar />
                 <CKEditor
                     editor={InlineEditor}
                     config={{ extraPlugins: [MyCustomUploadAdapterPlugin] }}
                     data="<h1>Title</h1>"
                     onInit={(editor) => {
-                        // You can store the "editor" and use when it is needed.
-
-                        console.log(editor.plugins.get("FileRepository"));
                     }}
                     onChange={(event, editor) => {
                         const data = editor.getData();
-                        console.log({ data });
+
+                        clearTimeout(timeout);
+
+                        timeout = setTimeout(function() {
+                            console.log({ data });
+                        }, 3000)
                     }}
                     onBlur={(event, editor) => {
                         console.log("Blur.", editor);
