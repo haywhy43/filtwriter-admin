@@ -66,6 +66,8 @@ class EditArticle extends React.Component {
                                     .catch((error) => {
                                     });
                             }, 3000);
+
+                            console.log(editor.getData())
                         }}
                         onBlur={(event, editor) => {
                             console.log("Blur.", editor);

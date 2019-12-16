@@ -4,7 +4,7 @@
     /* align-items: center; */
     height: 100vh;
     width: 80%;
-    padding: 0px 20px;
+    /* padding: 0px 20px; */
 }
 @media screen and (max-width: 600px) {
     .article {
@@ -20,6 +20,12 @@
     .createWrapper {
         padding: 30px 0px !important;
     }
+}
+.wrapper{
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+    display: flex;
 }
 .create {
     color: #fdecff;

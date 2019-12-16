@@ -24,20 +24,24 @@ class Articles extends Component {
                 <SideBar />
 
                 <div className="article">
-                    <div className="createWrapper">
-                        <h2>All Articles</h2>
-                        <Link to="/articles/new" className="create_btn">
-                            Create New Article
-                        </Link>
-                    </div>
                     {this.state.articles.length ? (
-                        <div className="card-wrapper">
-                            <ArticleCard articles={this.state.articles} />
+                        <div>
+                            <div className="createWrapper">
+                                <h2>All Articles</h2>
+                                <Link to="/articles/new" className="create_btn">
+                                    Create New Article
+                                </Link>
+                            </div>
+                            <div className="card-wrapper">
+                                <ArticleCard articles={this.state.articles} />
+                            </div>
                         </div>
                     ) : (
-                        <Link className="create" to="/articles/new">
-                            Create New Article <img src={plus} alt="plus sign" width="25px" height="25px" />
-                        </Link>
+                        <div className="wrapper">
+                            <Link className="create" to="/articles/new">
+                                Create New Article <img src={plus} alt="plus sign" width="25px" height="25px" />
+                            </Link>
+                        </div>
                     )}
                 </div>
             </div>

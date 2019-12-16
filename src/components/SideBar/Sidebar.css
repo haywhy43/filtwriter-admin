@@ -92,7 +92,8 @@ li {
 @media screen and (max-width: 600px){
     .sidebar{
         display: none;
-        width: 100vw;
+        min-width: 100vw;
+        min-height: 100vh;
         position: absolute;
         opacity: 0.9;
         z-index: 999;
